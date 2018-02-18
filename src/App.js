@@ -29,12 +29,74 @@ class App extends Component {
   }
 
   render() {
+  const styles = {
+    button: {
+      flex: 1,
+      textAlign: 'center',
+      float: 'center',
+      fontSize: '25px',
+      fontFamily: 'Archivo Narrow',
+      clear: 'both',
+      paddingBottom: '1px',
+    },
+    input: {
+      color: 'black',
+      fontSize: '25px',
+      fontFamily: 'Archivo Narrow',
+      border: '1px solid grey',
+    },
+    container: {
+      display: 'flex',
+    },
+    form: {
+      flex: 1,
+      borderRadius: '24px',
+      fontSize: '32px',
+      paddingTop: '50px',
+      paddingBottom: '50px',
+      textAllign: 'center',
+      float: 'center',
+      color: 'black'
+    },
+    main: { 
+      flex: 3,
+      textAllign: 'center',
+      background: '#f46868',
+      height: '100vh',
+    },
+    overlay: {
+      display: 'flex',
+      height:'100vh',
+      flex: 4,
+      backgroundColor: 'white',
+      borderLeft: '5px solid #5b83fb',
+    },
+    image: {
+      flex: 1,
+      border: '3px solid white',
+      borderRadius: '20px',
+      width: '275px',
+      height: '375px',
+    },
+    App: {
+      textAlign: 'center',
+    }
+  }
     const { movie } = this.state
     return (
       <div className='App'>
-        <input type='text' placeholder='Enter a title' ref='title' />
-        <button onClick={this.getMovie}>Title Details</button>
-        <Movie movie={movie}/>
+        <div style={styles.container}>
+          <div style={styles.main}>
+            <div style={styles.form}>
+              <input style={styles.input} type='text' placeholder='Enter a title' ref='title' />
+              <button style={styles.button} onClick={this.getMovie}>Get Title</button>
+            </div>
+            <img style={styles.image} src={movie.Poster} />
+          </div>
+          <div style={styles.overlay}>  
+            <Movie movie={movie}/>
+          </div>
+        </div>
       </div>
     )
   }
