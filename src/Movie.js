@@ -1,65 +1,80 @@
 import React, {Component} from 'react';
-
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import { RaisedButton } from 'material-ui';
+import { Paper } from 'material-ui';
+import Divider from 'material-ui/Divider';
 class Movie extends Component {
+
 
   render() {
     const styles = {
       box: {
-        flex: 1,
-        display: 'inline-block',
-        fontStyle: 'bolder',
+        display: 'inline',
       },
       header: {
-        fontFamily: 'Archivo Narrow',
         textAlign: 'left',
-        fontSize: '18px',
-        float: 'center',
-        paddingLeft: '25px',
-        paddingTop: '20px',
-        paddingBottom: '20px',
-        fontStyle: 'bold',
-        color: '#50525f',
-        borderTop: '2px solid #5b83fb'
+        fontSize: 18,
+        margin: 15,
+        paddingLeft: 25,
+        paddingTop: 15,
+        paddingBottom: 15,
+        flex: 1,
         
       },
       info: {
-        fontFamily: 'Archivo Narrow',
-        fontSize: '18px',
-        padding: '2px',
-        postion: 'fixed',
-        color: '#f46868',
-
+        position: 'relative',
+        fontSize: 16,
+        fontStyle: 'italic',
+        bottom: 6,
+        left: 8,
+        display: 'inline-block',
+        width: 700,
       },
       details: {
-        fontFamily: 'Archivo Narrow',
-        paddingTop: '30px',
-        paddingBottom: '20px',
-        fontStyle: 'bolder',
+        textAlign: 'center',
+        display: 'flex',
         float: 'center',
-        fontSize: '32px',
-        color: '#2acabf',
+        fontSize: 24,
+        paddingLeft: 25,
+        paddingTop: 15,
+        paddingBottom: 15,
+        margin: 20,
 
       },
-      flex: {
-        flex: 1,
-        display: 'flex',
+      icons: {
+        fontSize: 24,
+        float: 'center',
+        margin: 'auto',
+        color: '#00BCD4',
+        marginBottom: 2,
+      },
+      plot: {
+        position: 'relative',
+        fontSize: 16,
+        fontStyle: 'italic',
+        bottom: -2,
+        left: 8,
+        display: 'inline-block',
+        width: 700,
       }
     }
     const {movie} = this.props
     return (
-      <div style={styles.flex}>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
         <div style={styles.box}>
-          <div style={styles.details}>Title Details</div>
-          <div style={styles.header}>Title: <span style = {styles.info}>{movie.Title}</span> </div>
-          <div style={styles.header}>Actors: <span style = {styles.info}>{movie.Actors}</span></div>
-          <div style={styles.header}>Director: <span style={styles.info}>{movie.Director}</span></div>
-          <div style={styles.header}>Released: <span style={styles.info}>{movie.Released}</span></div>
-          <div style={styles.header}>Rated: <span style={styles.info}>{movie.Rated}</span></div>
-          <div style={styles.header}>Awards: <span style={styles.info}>{movie.Awards}</span></div>
-          <div style={styles.header}>IMDB Rating: <span style={styles.info}>{movie.ImdbRating}</span></div>
-          <div style={styles.header}>Plot: <span style={styles.info}>{movie.Plot}</span></div>
+          <div style={styles.details}>Details</div>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">local_movies</i><span style = {styles.info}>{movie.Title}</span> </Paper>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">people</i><span style = {styles.info}>{movie.Actors}</span></Paper>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">videocam</i><span style={styles.info}>{movie.Director}</span></Paper>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">event</i><span style={styles.info}>{movie.Released}</span></Paper>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">priority_high</i><span style={styles.info}>{movie.Rated}</span></Paper>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">grade</i><span style={styles.info}>{movie.Awards}</span></Paper>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">trending_up</i><span style={styles.info}>{movie.ImdbRating}</span></Paper>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">short_text</i><span style={styles.plot}>{movie.Plot}</span></Paper>
         </div>
-      </div>
+      </MuiThemeProvider>
     )
   }
 }

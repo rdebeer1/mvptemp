@@ -1,14 +1,23 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Movie from './Movie';
+import {RaisedButton} from 'material-ui';
+import {Paper} from 'material-ui';
+import { withStyles } from 'material-ui/styles';
+import TextField from 'material-ui/TextField';
 import './App.css';
+import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 const config = require('./config.js');
+
 
 class App extends Component {
   state = {
-    movie: {}
+    movie: {},
   }
+  
   getMovie = () => {
-    const title = this.refs.title.value
+    const title = this.refs.title.input.value
     fetch(`http://www.omdbapi.com/?t=${title}&apikey=${config.MY_KEY}`)
       .then(response => response.json())
       .then(data => {
@@ -32,72 +41,64 @@ class App extends Component {
   const styles = {
     button: {
       flex: 1,
-      textAlign: 'center',
-      float: 'center',
-      fontSize: '25px',
-      fontFamily: 'Archivo Narrow',
-      clear: 'both',
-      paddingBottom: '1px',
+      margin: 12,
     },
     input: {
-      color: 'black',
-      fontSize: '25px',
-      fontFamily: 'Archivo Narrow',
-      border: '1px solid grey',
+      fontSize: 16,
     },
     container: {
       display: 'flex',
     },
     form: {
       flex: 1,
-      borderRadius: '24px',
-      fontSize: '32px',
-      paddingTop: '50px',
-      paddingBottom: '50px',
-      textAllign: 'center',
-      float: 'center',
-      color: 'black'
+      flexWrap: 'wrap',
+      width: 'auto',
+      marginBottom: 80,
+      marginTop: 20,
+
     },
     main: { 
-      flex: 3,
-      textAllign: 'center',
-      background: '#f46868',
+      textAlign: 'center',
       height: '100vh',
+      minWidth: '25%',
+      flex: 1,
+      paddingTop: '1%',
+      margin: '1%',
     },
     overlay: {
-      display: 'flex',
-      height:'100vh',
-      flex: 4,
-      backgroundColor: 'white',
-      borderLeft: '5px solid #5b83fb',
+      flex: 1,
+      height: '100vh',
+      minWidth: '65%',
+      overflow: 'scroll',
     },
     image: {
-      flex: 1,
-      border: '3px solid white',
-      borderRadius: '20px',
-      width: '275px',
-      height: '375px',
+      border: '5px solid white',
+      borderRadius: 20,
+      width: 275,
+      height: 375,
     },
     App: {
-      textAlign: 'center',
+
     }
   }
     const { movie } = this.state
     return (
-      <div className='App'>
-        <div style={styles.container}>
-          <div style={styles.main}>
-            <div style={styles.form}>
-              <input style={styles.input} type='text' placeholder='Enter a title' ref='title' />
-              <button style={styles.button} onClick={this.getMovie}>Get Title</button>
+      <MuiThemeProvider muiTheme={getMuiTheme(darkBaseTheme)}>
+        <Paper className='App' style={styles.App}>
+          <div style={styles.container}>
+            <div style={styles.main} >
+              <form style={styles.form} noValidate autoComplete='off'>
+                <TextField style={styles.input} ref='title' type='text' floatingLabelText='Search'/>
+                <RaisedButton style={styles.button} onClick={this.getMovie} secondary={true} label='Get Title' labelPosition='before' icon={<i class="material-icons">search</i>}/>
+              </form>
+              <img style={styles.image} src={movie.Poster} alt='' />
             </div>
-            <img style={styles.image} src={movie.Poster} />
+            <div style={styles.overlay}>  
+              <Movie movie={movie}/>
+            </div>
           </div>
-          <div style={styles.overlay}>  
-            <Movie movie={movie}/>
-          </div>
-        </div>
-      </div>
+        </Paper>
+      </MuiThemeProvider>
     )
   }
 }
