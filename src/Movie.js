@@ -2,9 +2,7 @@ import React, {Component} from 'react';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import { RaisedButton } from 'material-ui';
 import { Paper } from 'material-ui';
-import Divider from 'material-ui/Divider';
 class Movie extends Component {
 
 

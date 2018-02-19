@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import Movie from './Movie';
 import {RaisedButton} from 'material-ui';
 import {Paper} from 'material-ui';
-import { withStyles } from 'material-ui/styles';
 import TextField from 'material-ui/TextField';
 import './App.css';
 import darkBaseTheme from 'material-ui/styles/baseThemes/darkBaseTheme';
