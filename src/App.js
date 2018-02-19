@@ -30,7 +30,7 @@ class App extends Component {
             Released: data.Released,
             Rated: data.Rated,
             Awards: data.Awards,
-            ImdbRating: data.imdbRating,
+            Ratings: data.Ratings[1].Value
           }
         })
       })

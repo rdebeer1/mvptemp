@@ -69,7 +69,7 @@ class Movie extends Component {
           <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">event</i><span style={styles.info}>{movie.Released}</span></Paper>
           <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">priority_high</i><span style={styles.info}>{movie.Rated}</span></Paper>
           <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">grade</i><span style={styles.info}>{movie.Awards}</span></Paper>
-          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">trending_up</i><span style={styles.info}>{movie.ImdbRating}</span></Paper>
+          <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">trending_up</i><span style={styles.info}>{movie.Ratings}</span></Paper>
           <Paper style={styles.header} zDepth={5}><i style={styles.icons} class="material-icons">short_text</i><span style={styles.plot}>{movie.Plot}</span></Paper>
         </div>
       </MuiThemeProvider>
